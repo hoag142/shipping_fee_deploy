@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Docker deployment orchestrator for a Shipping Fee Calculator integrating with GHN (Giao Hàng Nhanh) Vietnamese shipping carrier API. This repo coordinates two application repositories:
+Docker deployment orchestrator for a Shipping Fee Calculator integrating with GHN (Giao Hàng Nhanh) Vietnamese shipping carrier API. This repo contains two git submodules:
 - `shipping_fee/` — Spring Boot backend (Java 17, Maven)
 - `shipping_fee_client/` — React frontend (TypeScript, Vite)
+
+Clone with submodules: `git clone --recurse-submodules <repo-url>`
 
 ## Build & Run Commands
 
@@ -96,10 +98,9 @@ Production gateway: `https://online-gateway.ghn.vn`
 - Loading and error states for all API calls
 - Vite proxy forwards `/api` to backend
 
-## Updating Applications
+## Updating Submodules
 
 ```bash
-cd shipping_fee && git pull && cd ..
-cd shipping_fee_client && git pull && cd ..
+git submodule update --remote --merge
 docker-compose up -d --build
 ```

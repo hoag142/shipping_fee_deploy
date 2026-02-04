@@ -9,34 +9,32 @@ Docker deployment for the Shipping Fee application (GHN API integration).
 
 ## Quick Start
 
-### 1. Clone this repository
+### 1. Clone this repository (with submodules)
 
 ```bash
-git clone https://github.com/hoag142/shipping_fee_deploy.git
+git clone --recurse-submodules https://github.com/hoag142/shipping_fee_deploy.git
 cd shipping_fee_deploy
 ```
 
-### 2. Clone application repositories
-
+Or if already cloned without submodules:
 ```bash
-git clone https://github.com/hoag142/shipping_fee.git
-git clone https://github.com/hoag142/shipping_fee_client.git
+git submodule update --init --recursive
 ```
 
-### 3. Configure environment
+### 2. Configure environment
 
 ```bash
 cp .env.example .env
 nano .env  # Add your GHN API credentials
 ```
 
-### 4. Build and run
+### 3. Build and run
 
 ```bash
 docker-compose up -d --build
 ```
 
-### 5. Access the application
+### 4. Access the application
 
 - **Frontend**: http://localhost (or http://your-server-ip)
 - **Backend API**: http://localhost:8080/api/
@@ -68,16 +66,16 @@ shipping_fee_deploy/
 ├── docker-compose.yml
 ├── .env.example
 ├── .env                    # Your local config (not committed)
-├── shipping_fee/           # Backend repo (cloned)
-└── shipping_fee_client/    # Frontend repo (cloned)
+├── .gitmodules             # Submodule configuration
+├── shipping_fee/           # Backend (git submodule)
+└── shipping_fee_client/    # Frontend (git submodule)
 ```
 
 ## Update Application
 
 ```bash
-# Pull latest changes
-cd shipping_fee && git pull && cd ..
-cd shipping_fee_client && git pull && cd ..
+# Pull latest submodule changes
+git submodule update --remote --merge
 
 # Rebuild and restart
 docker-compose up -d --build
