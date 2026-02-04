@@ -1,0 +1,6 @@
+[submodule "shipping_fee"]
+	path = shipping_fee
+	url = https://github.com/hoag142/shipping_fee.git
+[submodule "shipping_fee_client"]
+	path = shipping_fee_client
+	url = https://github.com/hoag142/shipping_fee_client.git
